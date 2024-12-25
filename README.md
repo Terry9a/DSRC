@@ -1,7 +1,7 @@
 
 The official implementation of CVPR2024 paper "DSRC: Learning Density-insensitive and Semantic-aware V2X Collaborative Representation against Corruptions.".![DSRC_Overview](https://github.com/Terry9a/DSRC/blob/main/image.png)
 
-> [**DSRC: Learning Density-insensitive and Semantic-aware V2X Collaborative Representation against Corruptions**](https://arxiv.org/ABS/2412.10739), <br>
+> [**DSRC: Learning Density-insensitive and Semantic-aware V2X Collaborative Representation against Corruptions**](https://arxiv.org/abs/2412.10739), <br>
 > Jingyu Zhang* , Yilei Wang*, Lang Qian, Peng Sun, Zengwen Li†,Sudong Jiang, Maolin Liu, Liang Song† <br>
 > Accepted by AAAI2025
 
