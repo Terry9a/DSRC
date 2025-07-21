@@ -12,18 +12,7 @@ import spconv.pytorch as spconv
 import torch.nn.functional as F
 from opencood.models.fuse_modules.self_attn import AttFusion
 import matplotlib.pyplot as plt
-def show_heatmaps(matrices,path=None, figsize=(5, 5),
-                  cmap='Blues'):
-    num_rows, num_cols = matrices.shape[0], matrices.shape[1]
-    fig, axes = plt.subplots(num_rows, num_cols, figsize=figsize,
-                                 sharex=True, sharey=True, squeeze=False)
 
-    for i, (row_axes, row_matrices) in enumerate(zip(axes, matrices)):
-        for j, (ax, matrix) in enumerate(zip(row_axes, row_matrices)):
-                pcm = ax.imshow(matrix, cmap=cmap)
-    # fig.colorbar(pcm, ax=axes, shrink=0.6)
-    # fig.canvas.set_window_title(titles)
-    plt.savefig(path,dpi=1300)
 
 class PointPillarBaseMultiScale(nn.Module):
     def __init__(self, args):
@@ -132,11 +121,8 @@ class PointPillarBaseMultiScale(nn.Module):
             fused_feature_list.append(fuse_module(feature_list[i], record_len))
             b,n,h,w = feature_list[i].shape
             result = np.array(feature_list[i][1].sigmoid().max(dim=0)[0].detach().to('cpu')).astype(np.float32)
-            show_heatmaps(result.reshape(1,1,h,w),"/home/gaojing/zjy/adv_14/opencood/v2x_pic/111base_feature"+str(i)+".pdf")
           
-            # exit()   
         fused_feature = self.backbone.decode_multiscale_feature(fused_feature_list)
-        exit() 
         if self.shrink_flag:
             fused_feature = self.shrink_conv(fused_feature)
 
